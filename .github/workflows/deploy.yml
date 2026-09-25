@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit -p .
+
+      # Local dev uses the Tailwind play CDN; production gets a compiled stylesheet instead.
+      - name: Compile Tailwind
+        run: |
+          printf '@tailwind base;\n@tailwind components;\n@tailwind utilities;\n' > tw-in.css
+          npx -y tailwindcss@3.4.17 --content './src/**/*.tsx' -i tw-in.css -o src/tailwind.generated.css --minify
+          sed -i 's#<script src="https://cdn.tailwindcss.com"></script>#<link rel="stylesheet" href="/src/tailwind.generated.css" />#' index.html
+          grep -q 'tailwind.generated.css' index.html
+
+      - name: Build
+        run: npx vite build --base=./
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

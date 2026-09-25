@@ -392,13 +392,13 @@ export default function App() {
           onSelectPramaan={handleSelectPramaanDefault}
         />
 
-        <div className="flex-1 lg:ml-[260px] flex flex-col min-h-screen bg-[#06141B] pb-20 lg:pb-0">
-          <header className="sticky top-0 z-30 bg-[#11212D]/95 backdrop-blur border-b border-[#9BA8AB]/20 px-4 sm:px-8 py-3 flex flex-wrap gap-3 items-center justify-between card-shadow">
+        <div className="flex-1 lg:ml-[260px] flex flex-col min-h-screen bg-[#BFDDF0] pb-20 lg:pb-0">
+          <header className="sticky top-0 z-30 bg-[#1B263B]/95 backdrop-blur border-b border-[#8CC0EB]/20 px-4 sm:px-8 py-3 flex flex-wrap gap-3 items-center justify-between card-shadow">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="lg:hidden w-8 h-8 rounded-lg bg-[#253745] flex items-center justify-center text-[#6BBF4A] flex-shrink-0">
+              <div className="lg:hidden w-8 h-8 rounded-lg bg-[#2A3A55] flex items-center justify-center text-[#6BBF4A] flex-shrink-0">
                 <Icon name="Layers" size={18} />
               </div>
-              <span className="text-[12px] uppercase text-[#9BA8AB] font-semibold tracking-wider hidden sm:inline">
+              <span className="text-[12px] uppercase text-[#8CC0EB] font-semibold tracking-wider hidden sm:inline">
                 Active Session:
               </span>
               <span className={`px-3 py-1 rounded text-[12px] uppercase font-bold tracking-wider flex items-center gap-1.5 truncate ${
@@ -412,12 +412,12 @@ export default function App() {
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-[11px] text-[#9BA8AB] uppercase tracking-wider hidden xl:inline">
+              <span className="text-[11px] text-[#8CC0EB] uppercase tracking-wider hidden xl:inline">
                 Judge Testing Tool:
               </span>
               <button
                 onClick={handleInstantSwitchRole}
-                className="px-3.5 py-1.5 bg-[#253745] hover:bg-[#4A5C6A] text-[#CCD0CF] rounded-lg text-[12px] uppercase font-bold flex items-center gap-2 border border-[#9BA8AB]/20 btn-interact"
+                className="px-3.5 py-1.5 bg-[#2A3A55] hover:bg-[#3B5378] text-[#FFF9D2] rounded-lg text-[12px] uppercase font-bold flex items-center gap-2 border border-[#8CC0EB]/20 btn-interact"
                 title="Instantly toggle between Citizen and Officer interfaces without logging out"
               >
                 <Icon name="RefreshCw" size={14} className="text-[#6BBF4A]" />
@@ -512,8 +512,17 @@ export default function App() {
 
 function Shell({ children }) {
   return (
-    <div className="min-h-screen bg-[#06141B] text-[#CCD0CF] antialiased font-['Lora',serif]">
+    <div className="min-h-screen bg-[#BFDDF0] text-[#1B263B] antialiased font-['Lora',serif]">
       <style>{`
+        :root {
+          --color-bg: #BFDDF0; --color-card: #1B263B; --color-card-subtle: #B4E1EB;
+          --color-secondary: #8CC0EB; --color-primary: #1B263B;
+          --color-text-primary: #FFF9D2; --color-text-secondary: #8CC0EB; --color-text-dark: #1B263B;
+          --color-success: #6BBF4A; --color-error: #F44336; --color-warning: #FF9800;
+        }
+        body { background: var(--color-bg); }
+        input, select, textarea { color-scheme: dark; }
+        select option { background: var(--color-card); color: var(--color-text-primary); }
         .font-bebas { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 400 !important; }
         .btn-interact { transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
         .btn-interact:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); cursor: pointer; }
@@ -531,7 +540,7 @@ function Shell({ children }) {
 function Toast({ message, tone }) {
   const tones = {
     success: 'bg-[#6BBF4A] text-black',
-    info: 'bg-[#253745] text-[#CCD0CF] border border-[#9BA8AB]/30',
+    info: 'bg-[#2A3A55] text-[#FFF9D2] border border-[#8CC0EB]/30',
     warn: 'bg-[#FF9800] text-black',
   };
   return (
@@ -569,20 +578,20 @@ function Sidebar({ user, currentScreen, onNavigate, onLogout, onSelectPramaan })
   const navItems = navItemsFor(user, onSelectPramaan);
 
   return (
-    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] bg-[#4A5C6A] flex-col justify-between p-5 z-40 border-r border-[#9BA8AB]/20 card-shadow">
+    <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] bg-[#1B263B] flex-col justify-between p-5 z-40 border-r border-[#8CC0EB]/20 card-shadow">
       <div>
-        <div className="flex items-center gap-3 px-2 py-4 mb-5 border-b border-[#9BA8AB]/20">
-          <div className="w-10 h-10 rounded-lg bg-[#11212D] flex items-center justify-center border border-[#9BA8AB]/30 text-[#6BBF4A]">
+        <div className="flex items-center gap-3 px-2 py-4 mb-5 border-b border-[#8CC0EB]/20">
+          <div className="w-10 h-10 rounded-lg bg-[#1B263B] flex items-center justify-center border border-[#8CC0EB]/30 text-[#6BBF4A]">
             <Icon name="Layers" size={22} />
           </div>
           <div>
-            <h1 className="font-bebas text-[28px] tracking-wider text-[#CCD0CF] leading-none m-0">JANSETU</h1>
-            <span className="text-[11px] text-[#9BA8AB] tracking-widest uppercase font-sans font-semibold">Civic Bridge v2.5</span>
+            <h1 className="font-bebas text-[28px] tracking-wider text-[#FFF9D2] leading-none m-0">JANSETU</h1>
+            <span className="text-[11px] text-[#8CC0EB] tracking-widest uppercase font-sans font-semibold">Civic Bridge v2.5</span>
           </div>
         </div>
 
-        <div className="mb-6 px-3 py-2 rounded-lg bg-[#253745]/80 border border-[#9BA8AB]/20 flex items-center justify-between">
-          <span className="text-[11px] uppercase text-[#9BA8AB] font-semibold">Role View</span>
+        <div className="mb-6 px-3 py-2 rounded-lg bg-[#2A3A55]/80 border border-[#8CC0EB]/20 flex items-center justify-between">
+          <span className="text-[11px] uppercase text-[#8CC0EB] font-semibold">Role View</span>
           <span className={`text-[11px] font-bold uppercase px-2 py-0.5 rounded ${
             isCitizen ? 'bg-[#6BBF4A]/20 text-[#6BBF4A]' : 'bg-[#FF9800]/20 text-[#FF9800]'
           }`}>
@@ -600,14 +609,14 @@ function Sidebar({ user, currentScreen, onNavigate, onLogout, onSelectPramaan })
                 aria-current={isActive ? 'page' : undefined}
                 className={`w-full flex items-center gap-3.5 px-3.5 py-3 rounded-lg font-semibold tracking-wide btn-interact text-left ${
                   isActive
-                    ? 'bg-[#11212D] text-[#CCD0CF] shadow-inner border border-[#9BA8AB]/30'
-                    : 'text-[#CCD0CF]/85 hover:bg-[#253745] hover:text-[#CCD0CF] border border-transparent'
+                    ? 'bg-[#8CC0EB]/15 text-[#FFF9D2] border border-[#8CC0EB]/40'
+                    : 'text-[#FFF9D2]/85 hover:bg-[#2A3A55] hover:text-[#FFF9D2] border border-transparent'
                 }`}
               >
                 <Icon
                   name={item.icon}
                   size={20}
-                  className={isActive ? (isCitizen ? "text-[#6BBF4A]" : "text-[#FF9800]") : "text-[#9BA8AB]"}
+                  className={isActive ? (isCitizen ? "text-[#6BBF4A]" : "text-[#FF9800]") : "text-[#8CC0EB]"}
                 />
                 <span className="uppercase text-[13px]">{item.label}</span>
               </button>
@@ -616,20 +625,20 @@ function Sidebar({ user, currentScreen, onNavigate, onLogout, onSelectPramaan })
         </nav>
       </div>
 
-      <div className="pt-4 border-t border-[#9BA8AB]/20">
+      <div className="pt-4 border-t border-[#8CC0EB]/20">
         <div className="flex items-center gap-3 px-2 py-2 mb-2">
-          <div className="w-10 h-10 rounded-full bg-[#253745] border border-[#9BA8AB]/30 flex items-center justify-center text-[#CCD0CF] font-bold text-sm">
+          <div className="w-10 h-10 rounded-full bg-[#2A3A55] border border-[#8CC0EB]/30 flex items-center justify-center text-[#FFF9D2] font-bold text-sm">
             {user.name.charAt(0)}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-[13px] font-semibold text-[#CCD0CF] truncate leading-tight">{user.name}</p>
-            <p className="text-[11px] text-[#9BA8AB] truncate font-mono">{user.id}</p>
+            <p className="text-[13px] font-semibold text-[#FFF9D2] truncate leading-tight">{user.name}</p>
+            <p className="text-[11px] text-[#8CC0EB] truncate font-mono">{user.id}</p>
           </div>
         </div>
 
         <button
           onClick={onLogout}
-          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#253745] hover:bg-[#F44336]/20 text-[#CCD0CF] hover:text-[#F44336] text-[13px] font-bold uppercase tracking-wider btn-interact border border-[#9BA8AB]/20"
+          className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#2A3A55] hover:bg-[#F44336]/20 text-[#FFF9D2] hover:text-[#F44336] text-[13px] font-bold uppercase tracking-wider btn-interact border border-[#8CC0EB]/20"
         >
           <Icon name="LogOut" size={16} />
           Sign Out
@@ -643,14 +652,14 @@ function MobileNav({ user, currentScreen, onNavigate, onSelectPramaan }) {
   const navItems = navItemsFor(user, onSelectPramaan);
   const accent = user.role === 'citizen' ? 'text-[#6BBF4A]' : 'text-[#FF9800]';
   return (
-    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#11212D]/95 backdrop-blur border-t border-[#9BA8AB]/20 flex justify-around px-2 pt-2" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}>
+    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#1B263B]/95 backdrop-blur border-t border-[#8CC0EB]/20 flex justify-around px-2 pt-2" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}>
       {navItems.map((item) => {
         const isActive = isNavActive(item.id, currentScreen);
         return (
           <button
             key={item.id}
             onClick={() => (item.action ? item.action() : onNavigate(item.id))}
-            className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-[10px] uppercase font-bold ${isActive ? accent : 'text-[#9BA8AB]'}`}
+            className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-[10px] uppercase font-bold ${isActive ? accent : 'text-[#8CC0EB]'}`}
           >
             <Icon name={item.icon} size={20} />
             {item.short}
@@ -666,7 +675,7 @@ function MobileNav({ user, currentScreen, onNavigate, onSelectPramaan }) {
 /* ------------------------------------------------------------------ */
 
 const CATEGORY_TINT = {
-  Roads: '#4A5C6A', Water: '#2B6CB0', Sanitation: '#5A6B3A', Electricity: '#B7791F', Garbage: '#6B4F3A', Streetlight: '#7B5EA7',
+  Roads: '#3B5378', Water: '#2B6CB0', Sanitation: '#5A6B3A', Electricity: '#B7791F', Garbage: '#6B4F3A', Streetlight: '#7B5EA7',
 };
 
 // Falls back to a labelled placeholder when there's no photo or the URL fails to load.
@@ -675,11 +684,11 @@ function IssueImage({ src, category, alt, className = "" }) {
   useEffect(() => { setFailed(false); }, [src]);
 
   if (!src || failed) {
-    const tint = CATEGORY_TINT[category] || '#4A5C6A';
+    const tint = CATEGORY_TINT[category] || '#3B5378';
     return (
       <div
-        className={`flex flex-col items-center justify-center text-[#CCD0CF]/80 ${className}`}
-        style={{ background: `linear-gradient(135deg, ${tint}55, #06141B 85%)` }}
+        className={`flex flex-col items-center justify-center text-[#FFF9D2]/80 ${className}`}
+        style={{ background: `linear-gradient(135deg, ${tint}55, #121A2B 85%)` }}
         role="img"
         aria-label={alt}
       >
@@ -693,7 +702,7 @@ function IssueImage({ src, category, alt, className = "" }) {
 }
 
 const STATUS_META = {
-  Pending:   { label: 'Awaiting Officer', cls: 'bg-[#253745] text-[#9BA8AB]' },
+  Pending:   { label: 'Awaiting Officer', cls: 'bg-[#2A3A55] text-[#8CC0EB]' },
   Claimed:   { label: 'Work In Progress', cls: 'bg-[#FF9800]/20 text-[#FF9800]' },
   Completed: { label: 'Verified Resolved', cls: 'bg-[#6BBF4A]/20 text-[#6BBF4A]' },
   Flagged:   { label: 'Flagged · Human Review', cls: 'bg-[#F44336]/20 text-[#F44336]' },
@@ -713,15 +722,15 @@ function StatusStepper({ status }) {
       {steps.map((label, idx) => {
         const done = idx < reached;
         const isLastFlag = status === 'Flagged' && idx === 3;
-        const dot = isLastFlag ? 'bg-[#F44336] border-[#F44336]' : done ? 'bg-[#6BBF4A] border-[#6BBF4A]' : 'bg-transparent border-[#4A5C6A]';
+        const dot = isLastFlag ? 'bg-[#F44336] border-[#F44336]' : done ? 'bg-[#6BBF4A] border-[#6BBF4A]' : 'bg-transparent border-[#3B5378]';
         return (
           <li key={label} className="flex-1 flex items-center last:flex-none">
             <div className="flex flex-col items-center gap-1">
               <span className={`w-3 h-3 rounded-full border-2 ${dot}`} />
-              <span className={`text-[10px] uppercase font-bold tracking-wide whitespace-nowrap ${isLastFlag ? 'text-[#F44336]' : done ? 'text-[#CCD0CF]' : 'text-[#9BA8AB]/60'}`}>{label}</span>
+              <span className={`text-[10px] uppercase font-bold tracking-wide whitespace-nowrap ${isLastFlag ? 'text-[#F44336]' : done ? 'text-[#FFF9D2]' : 'text-[#8CC0EB]/60'}`}>{label}</span>
             </div>
             {idx < steps.length - 1 && (
-              <span className={`flex-1 h-0.5 mx-1 -mt-4 ${idx < reached - 1 ? 'bg-[#6BBF4A]' : 'bg-[#253745]'}`} />
+              <span className={`flex-1 h-0.5 mx-1 -mt-4 ${idx < reached - 1 ? 'bg-[#6BBF4A]' : 'bg-[#2A3A55]'}`} />
             )}
           </li>
         );
@@ -730,10 +739,10 @@ function StatusStepper({ status }) {
   );
 }
 
-function StatTile({ label, value, icon, accent = 'text-[#CCD0CF]' }) {
+function StatTile({ label, value, icon, accent = 'text-[#FFF9D2]' }) {
   return (
-    <div className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-4 card-shadow">
-      <span className="text-[11px] uppercase text-[#9BA8AB] block mb-1 font-semibold tracking-wide">{label}</span>
+    <div className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-4 card-shadow">
+      <span className="text-[11px] uppercase text-[#8CC0EB] block mb-1 font-semibold tracking-wide">{label}</span>
       <div className="flex items-center gap-2">
         {icon && <Icon name={icon} size={20} className={accent} />}
         <span className={`font-bebas text-[28px] leading-none ${accent}`}>{value}</span>
@@ -746,16 +755,16 @@ type PageHeaderProps = { title: string; subtitle?: string; onBack?: () => void; 
 
 function PageHeader({ title, subtitle, onBack, children }: PageHeaderProps) {
   return (
-    <div className="flex flex-wrap gap-4 items-center justify-between mb-6 pb-4 border-b border-[#253745]">
+    <div className="flex flex-wrap gap-4 items-center justify-between mb-6 pb-4 border-b border-[#1B263B]/15">
       <div className="flex items-center gap-3 min-w-0">
         {onBack && (
-          <button onClick={onBack} aria-label="Back" className="p-2 rounded-lg bg-[#253745] hover:bg-[#4A5C6A] text-[#CCD0CF] btn-interact flex-shrink-0">
+          <button onClick={onBack} aria-label="Back" className="p-2 rounded-lg bg-[#2A3A55] hover:bg-[#3B5378] text-[#FFF9D2] btn-interact flex-shrink-0">
             <Icon name="ArrowLeft" size={20} />
           </button>
         )}
         <div className="min-w-0">
-          <h1 className="font-bebas text-[28px] sm:text-[32px] text-[#CCD0CF] leading-tight m-0">{title}</h1>
-          {subtitle && <p className="text-[13px] sm:text-[14px] text-[#9BA8AB] mt-0.5">{subtitle}</p>}
+          <h1 className="font-bebas text-[28px] sm:text-[32px] text-[#1B263B] leading-tight m-0">{title}</h1>
+          {subtitle && <p className="text-[13px] sm:text-[14px] text-[#1B263B]/75 mt-0.5">{subtitle}</p>}
         </div>
       </div>
       {children}
@@ -765,13 +774,13 @@ function PageHeader({ title, subtitle, onBack, children }: PageHeaderProps) {
 
 function SegmentedTabs({ value, onChange, options }) {
   return (
-    <div className="flex bg-[#11212D] border border-[#9BA8AB]/20 rounded-lg p-1 overflow-x-auto">
+    <div className="flex bg-[#B4E1EB] border border-[#8CC0EB] rounded-lg p-1 overflow-x-auto">
       {options.map(opt => (
         <button
           key={opt.value}
           onClick={() => onChange(opt.value)}
           className={`px-4 py-2 text-[13px] uppercase font-semibold rounded-md btn-interact whitespace-nowrap ${
-            value === opt.value ? 'bg-[#4A5C6A] text-[#CCD0CF] shadow' : 'text-[#9BA8AB] hover:text-[#CCD0CF]'
+            value === opt.value ? 'bg-[#1B263B] text-[#FFF9D2] shadow' : 'text-[#1B263B]/75 hover:text-[#1B263B]'
           }`}
         >
           {opt.label}
@@ -781,8 +790,8 @@ function SegmentedTabs({ value, onChange, options }) {
   );
 }
 
-const inputCls = "w-full bg-[#06141B] border border-[#9BA8AB]/30 rounded-lg px-4 py-3 text-[#CCD0CF] text-[15px] focus:outline-none focus:border-[#6BBF4A] placeholder:text-[#9BA8AB]/50";
-const labelCls = "block text-[12px] uppercase text-[#9BA8AB] font-semibold mb-2";
+const inputCls = "w-full bg-[#121A2B] border border-[#8CC0EB]/30 rounded-lg px-4 py-3 text-[#FFF9D2] text-[15px] focus:outline-none focus:border-[#6BBF4A] placeholder:text-[#8CC0EB]/50";
+const labelCls = "block text-[12px] uppercase text-[#8CC0EB] font-semibold mb-2";
 
 /* ------------------------------------------------------------------ */
 /* SCREEN 1: AUTH                                                      */
@@ -809,26 +818,26 @@ function ScreenAuth({ onLogin }) {
   };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center p-4 sm:p-6 bg-[#06141B]">
-      <div className="w-full max-w-[480px] bg-[#11212D] border border-[#9BA8AB]/20 rounded-xl p-6 sm:p-8 card-shadow">
+    <div className="w-full min-h-screen flex items-center justify-center p-4 sm:p-6 bg-[#BFDDF0]">
+      <div className="w-full max-w-[480px] bg-[#1B263B] border border-[#8CC0EB]/20 rounded-xl p-6 sm:p-8 card-shadow">
         <div className="text-center mb-6">
-          <div className="w-14 h-14 mx-auto rounded-xl bg-[#253745] flex items-center justify-center border border-[#9BA8AB]/30 text-[#6BBF4A] mb-3">
+          <div className="w-14 h-14 mx-auto rounded-xl bg-[#2A3A55] flex items-center justify-center border border-[#8CC0EB]/30 text-[#6BBF4A] mb-3">
             <Icon name="Layers" size={32} />
           </div>
-          <h1 className="font-bebas text-[32px] text-[#CCD0CF] leading-tight tracking-wider">JANSETU CIVIC PORTAL</h1>
-          <p className="text-[14px] text-[#9BA8AB] mt-1">Citizen Accountability & Municipal Nivaran Framework</p>
+          <h1 className="font-bebas text-[32px] text-[#FFF9D2] leading-tight tracking-wider">JANSETU CIVIC PORTAL</h1>
+          <p className="text-[14px] text-[#8CC0EB] mt-1">Citizen Accountability & Municipal Nivaran Framework</p>
         </div>
 
         <div className="grid grid-cols-3 gap-2 mb-6 text-center">
           {[['Awaaz', 'Citizens report'], ['Saboot', 'Officers prove'], ['Pramaan', 'AI verifies']].map(([t, s], i) => (
-            <div key={t} className="rounded-lg bg-[#06141B] border border-[#9BA8AB]/15 py-2 px-1">
-              <span className="block font-bebas text-[16px] text-[#CCD0CF]">{i + 1}. {t}</span>
-              <span className="text-[10px] text-[#9BA8AB] uppercase tracking-wide">{s}</span>
+            <div key={t} className="rounded-lg bg-[#121A2B] border border-[#8CC0EB]/15 py-2 px-1">
+              <span className="block font-bebas text-[16px] text-[#FFF9D2]">{i + 1}. {t}</span>
+              <span className="text-[10px] text-[#8CC0EB] uppercase tracking-wide">{s}</span>
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-2 p-1 bg-[#06141B] rounded-lg border border-[#9BA8AB]/20 mb-5" role="tablist">
+        <div className="grid grid-cols-2 p-1 bg-[#121A2B] rounded-lg border border-[#8CC0EB]/20 mb-5" role="tablist">
           {[['citizen', 'Citizen'], ['officer', 'Municipal Officer']].map(([val, label]) => (
             <button
               key={val}
@@ -837,7 +846,7 @@ function ScreenAuth({ onLogin }) {
               aria-selected={role === val}
               onClick={() => setRole(val)}
               className={`py-2 text-[14px] font-semibold uppercase rounded-md btn-interact ${
-                role === val ? 'bg-[#4A5C6A] text-[#CCD0CF] shadow' : 'text-[#9BA8AB] hover:text-[#CCD0CF]'
+                role === val ? 'bg-[#8CC0EB] text-[#1B263B] shadow' : 'text-[#8CC0EB] hover:text-[#FFF9D2]'
               }`}
             >
               {label}
@@ -845,14 +854,14 @@ function ScreenAuth({ onLogin }) {
           ))}
         </div>
 
-        <div className="flex border-b border-[#253745] mb-6">
+        <div className="flex border-b border-[#2A3A55] mb-6">
           {[['signin', 'Sign In'], ['create', 'Create Account']].map(([val, label]) => (
             <button
               key={val}
               type="button"
               onClick={() => setMode(val)}
               className={`flex-1 pb-3 text-center text-[15px] uppercase font-semibold border-b-2 btn-interact ${
-                mode === val ? 'border-[#6BBF4A] text-[#CCD0CF]' : 'border-transparent text-[#9BA8AB] hover:text-[#CCD0CF]'
+                mode === val ? 'border-[#6BBF4A] text-[#FFF9D2]' : 'border-transparent text-[#8CC0EB] hover:text-[#FFF9D2]'
               }`}
             >
               {label}
@@ -879,10 +888,10 @@ function ScreenAuth({ onLogin }) {
           </div>
 
           {role === 'citizen' && mode === 'create' && (
-            <div className="flex items-center justify-between p-3 bg-[#06141B] border border-[#9BA8AB]/20 rounded-lg">
+            <div className="flex items-center justify-between p-3 bg-[#121A2B] border border-[#8CC0EB]/20 rounded-lg">
               <div>
-                <span className="block text-[13px] font-semibold text-[#CCD0CF]">Always Post Anonymously</span>
-                <span className="text-[11px] text-[#9BA8AB]">Mask identity on public ward feed</span>
+                <span className="block text-[13px] font-semibold text-[#FFF9D2]">Always Post Anonymously</span>
+                <span className="text-[11px] text-[#8CC0EB]">Mask identity on public ward feed</span>
               </div>
               <button
                 type="button"
@@ -890,25 +899,25 @@ function ScreenAuth({ onLogin }) {
                 aria-checked={alwaysAnonymous}
                 aria-label="Always post anonymously"
                 onClick={() => setAlwaysAnonymous(!alwaysAnonymous)}
-                className={`w-11 h-6 rounded-full transition-colors p-0.5 ${alwaysAnonymous ? 'bg-[#6BBF4A]' : 'bg-[#253745]'}`}
+                className={`w-11 h-6 rounded-full transition-colors p-0.5 ${alwaysAnonymous ? 'bg-[#6BBF4A]' : 'bg-[#2A3A55]'}`}
               >
                 <div className={`w-5 h-5 rounded-full bg-white transition-transform ${alwaysAnonymous ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
             </div>
           )}
 
-          <button type="submit" className="w-full mt-2 py-3 bg-[#4A5C6A] hover:bg-[#6BBF4A] hover:text-black text-[#CCD0CF] font-semibold text-[16px] uppercase tracking-wider rounded-lg btn-interact border border-[#9BA8AB]/30 card-shadow">
+          <button type="submit" className="w-full mt-2 py-3 bg-[#8CC0EB] hover:bg-[#6BBF4A] hover:text-black text-[#1B263B] font-bold font-semibold text-[16px] uppercase tracking-wider rounded-lg btn-interact border border-[#8CC0EB]/30 card-shadow">
             {mode === 'create' ? 'Create Account & Continue' : 'Continue'}
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-[#9BA8AB]/20 text-center">
-          <span className="text-[11px] uppercase tracking-widest text-[#9BA8AB] font-bold block mb-3">⚖️ Judge & Evaluator Fast Demo Access</span>
+        <div className="mt-8 pt-6 border-t border-[#8CC0EB]/20 text-center">
+          <span className="text-[11px] uppercase tracking-widest text-[#8CC0EB] font-bold block mb-3">⚖️ Judge & Evaluator Fast Demo Access</span>
           <div className="grid grid-cols-2 gap-3">
-            <button type="button" onClick={() => onLogin(CITIZEN_DEMO)} className="py-2.5 px-3 bg-[#253745] hover:bg-[#6BBF4A] hover:text-black text-[#CCD0CF] rounded-lg text-[13px] uppercase font-bold btn-interact border border-[#9BA8AB]/20">
+            <button type="button" onClick={() => onLogin(CITIZEN_DEMO)} className="py-2.5 px-3 bg-[#2A3A55] hover:bg-[#6BBF4A] hover:text-black text-[#FFF9D2] rounded-lg text-[13px] uppercase font-bold btn-interact border border-[#8CC0EB]/20">
               Demo — Citizen
             </button>
-            <button type="button" onClick={() => onLogin(OFFICER_DEMO)} className="py-2.5 px-3 bg-[#253745] hover:bg-[#FF9800] hover:text-black text-[#CCD0CF] rounded-lg text-[13px] uppercase font-bold btn-interact border border-[#9BA8AB]/20">
+            <button type="button" onClick={() => onLogin(OFFICER_DEMO)} className="py-2.5 px-3 bg-[#2A3A55] hover:bg-[#FF9800] hover:text-black text-[#FFF9D2] rounded-lg text-[13px] uppercase font-bold btn-interact border border-[#8CC0EB]/20">
               Demo — Officer
             </button>
           </div>
@@ -974,7 +983,7 @@ function ScreenAwaazFeed({ issues, onAnumodan, onToggleTrack, onViewPramaan, onP
 
       <div className="flex flex-col md:flex-row gap-3 mb-4">
         <div className="relative flex-1">
-          <Icon name="Search" size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9BA8AB]" />
+          <Icon name="Search" size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8CC0EB]" />
           <input
             type="search"
             value={query}
@@ -997,7 +1006,7 @@ function ScreenAwaazFeed({ issues, onAnumodan, onToggleTrack, onViewPramaan, onP
             key={cat}
             onClick={() => setCategory(cat)}
             className={`px-3 py-1.5 rounded-full text-[12px] uppercase font-semibold whitespace-nowrap border btn-interact ${
-              category === cat ? 'bg-[#CCD0CF] text-[#06141B] border-[#CCD0CF]' : 'bg-[#11212D] text-[#9BA8AB] border-[#9BA8AB]/20 hover:text-[#CCD0CF]'
+              category === cat ? 'bg-[#FFF9D2] text-[#121A2B] border-[#FFF9D2]' : 'bg-[#1B263B] text-[#8CC0EB] border-[#8CC0EB]/20 hover:text-[#FFF9D2]'
             }`}
           >
             {cat}
@@ -1006,14 +1015,14 @@ function ScreenAwaazFeed({ issues, onAnumodan, onToggleTrack, onViewPramaan, onP
       </div>
 
       {displayed.length === 0 ? (
-        <div className="bg-[#11212D] rounded-xl border border-[#9BA8AB]/15 p-12 text-center">
-          <div className="w-12 h-12 mx-auto rounded-full bg-[#253745] flex items-center justify-center text-[#9BA8AB] mb-3">
+        <div className="bg-[#1B263B] rounded-xl border border-[#8CC0EB]/15 p-12 text-center">
+          <div className="w-12 h-12 mx-auto rounded-full bg-[#2A3A55] flex items-center justify-center text-[#8CC0EB] mb-3">
             <Icon name="Flame" size={24} />
           </div>
-          <h3 className="font-bebas text-[20px] text-[#CCD0CF]">
+          <h3 className="font-bebas text-[20px] text-[#FFF9D2]">
             {tab === 'tracked' && !query && category === 'All' ? "You aren't tracking any issues yet" : 'No issues match these filters'}
           </h3>
-          <p className="text-[14px] text-[#9BA8AB] max-w-md mx-auto mt-1 mb-4">
+          <p className="text-[14px] text-[#8CC0EB] max-w-md mx-auto mt-1 mb-4">
             {tab === 'tracked'
               ? 'Give an Anumodan or tap Track on any issue to follow its Nivaran and Saboot status here.'
               : 'Try another category or search term, or report a new civic defect.'}
@@ -1023,13 +1032,13 @@ function ScreenAwaazFeed({ issues, onAnumodan, onToggleTrack, onViewPramaan, onP
       ) : (
         <div className="space-y-5">
           {displayed.map((issue) => (
-            <article key={issue.id} className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl overflow-hidden card-shadow flex flex-col md:flex-row">
-              <div className="relative md:w-[340px] h-56 md:h-auto flex-shrink-0 bg-[#06141B] overflow-hidden">
+            <article key={issue.id} className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl overflow-hidden card-shadow flex flex-col md:flex-row">
+              <div className="relative md:w-[340px] h-56 md:h-auto flex-shrink-0 bg-[#121A2B] overflow-hidden">
                 <IssueImage src={issue.image} category={issue.category} alt={issue.title} className="w-full h-full md:absolute md:inset-0" />
                 <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 bg-[#11212D]/90 backdrop-blur-md border border-[#9BA8AB]/30 text-[#CCD0CF] text-[11px] uppercase font-semibold rounded-md">{issue.category}</span>
+                  <span className="px-2.5 py-1 bg-[#1B263B]/90 backdrop-blur-md border border-[#8CC0EB]/30 text-[#FFF9D2] text-[11px] uppercase font-semibold rounded-md">{issue.category}</span>
                   <span className={`px-2.5 py-1 backdrop-blur-md text-[11px] uppercase font-semibold rounded-md ${
-                    issue.severity === 'Major' ? 'bg-[#F44336]/85 text-white' : issue.severity === 'Moderate' ? 'bg-[#FF9800]/85 text-black' : 'bg-[#4A5C6A]/90 text-[#CCD0CF]'
+                    issue.severity === 'Major' ? 'bg-[#F44336]/85 text-white' : issue.severity === 'Moderate' ? 'bg-[#FF9800]/85 text-black' : 'bg-[#3B5378]/90 text-[#FFF9D2]'
                   }`}>{issue.severity}</span>
                 </div>
               </div>
@@ -1037,12 +1046,12 @@ function ScreenAwaazFeed({ issues, onAnumodan, onToggleTrack, onViewPramaan, onP
               <div className="p-5 sm:p-6 flex-1 flex flex-col gap-3 min-w-0">
                 <div className="flex flex-wrap items-center gap-2 justify-between">
                   <StatusBadge status={issue.status} />
-                  <span className="text-[12px] text-[#9BA8AB] font-mono">{issue.id}</span>
+                  <span className="text-[12px] text-[#8CC0EB] font-mono">{issue.id}</span>
                 </div>
 
                 <div>
-                  <h3 className="font-bebas text-[22px] text-[#CCD0CF] tracking-wide leading-snug">{issue.title}</h3>
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-[#9BA8AB] mt-1">
+                  <h3 className="font-bebas text-[22px] text-[#FFF9D2] tracking-wide leading-snug">{issue.title}</h3>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-[#8CC0EB] mt-1">
                     <Icon name="MapPin" size={14} className="text-[#FF9800]" />
                     <span>{issue.location}</span>
                     <span>•</span>
@@ -1052,35 +1061,35 @@ function ScreenAwaazFeed({ issues, onAnumodan, onToggleTrack, onViewPramaan, onP
                   </div>
                 </div>
 
-                <p className="text-[15px] text-[#CCD0CF]/85 line-clamp-2 leading-relaxed">{issue.description}</p>
+                <p className="text-[15px] text-[#FFF9D2]/85 line-clamp-2 leading-relaxed">{issue.description}</p>
 
                 <div className="py-2"><StatusStepper status={issue.status} /></div>
 
-                <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-[#253745] mt-auto">
+                <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-[#2A3A55] mt-auto">
                   <button
                     onClick={() => onAnumodan(issue.id)}
                     aria-pressed={issue.hasVoted}
                     className={`px-4 py-2 rounded-lg text-[13px] uppercase font-semibold btn-interact flex items-center gap-2 border ${
-                      issue.hasVoted ? 'bg-[#FF9800] text-black border-[#FF9800]' : 'bg-[#253745] hover:bg-[#4A5C6A] text-[#CCD0CF] border-[#9BA8AB]/20'
+                      issue.hasVoted ? 'bg-[#FF9800] text-black border-[#FF9800]' : 'bg-[#2A3A55] hover:bg-[#3B5378] text-[#FFF9D2] border-[#8CC0EB]/20'
                     }`}
                   >
                     <Icon name="Flame" size={16} className={issue.hasVoted ? 'text-black' : 'text-[#FF9800]'} />
                     {issue.hasVoted ? 'Anumodit' : 'Anumodan'}
-                    <span className={`font-bebas text-[17px] leading-none pl-2 border-l ${issue.hasVoted ? 'border-black/30' : 'border-[#9BA8AB]/30 text-[#FF9800]'}`}>{issue.anumodanCount}</span>
+                    <span className={`font-bebas text-[17px] leading-none pl-2 border-l ${issue.hasVoted ? 'border-black/30' : 'border-[#8CC0EB]/30 text-[#FF9800]'}`}>{issue.anumodanCount}</span>
                   </button>
 
                   <button
                     onClick={() => onToggleTrack(issue.id)}
                     aria-pressed={issue.isTracked}
                     className={`px-3 py-2 rounded-lg text-[13px] uppercase font-semibold btn-interact flex items-center gap-1.5 border ${
-                      issue.isTracked ? 'bg-[#CCD0CF]/10 text-[#CCD0CF] border-[#CCD0CF]/40' : 'bg-transparent text-[#9BA8AB] border-[#9BA8AB]/20 hover:text-[#CCD0CF]'
+                      issue.isTracked ? 'bg-[#FFF9D2]/10 text-[#FFF9D2] border-[#FFF9D2]/40' : 'bg-transparent text-[#8CC0EB] border-[#8CC0EB]/20 hover:text-[#FFF9D2]'
                     }`}
                   >
                     <Icon name="Bookmark" size={15} />
                     {issue.isTracked ? 'Tracking' : 'Track'}
                   </button>
 
-                  <span className="text-[11px] uppercase text-[#9BA8AB] font-semibold ml-auto hidden sm:flex items-center gap-1" title="Anumodan × severity weight">
+                  <span className="text-[11px] uppercase text-[#8CC0EB] font-semibold ml-auto hidden sm:flex items-center gap-1" title="Anumodan × severity weight">
                     <Icon name="TrendingUp" size={14} /> Priority {priorityScore(issue)}
                   </span>
 
@@ -1194,7 +1203,7 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
     <div className="max-w-3xl mx-auto w-full">
       <PageHeader title="POST NEW AWAAZ" subtitle="File an audited civic grievance into the municipal radar." onBack={onCancel} />
 
-      <form onSubmit={handleFormPreSubmit} className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-5 sm:p-8 card-shadow space-y-6">
+      <form onSubmit={handleFormPreSubmit} className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-5 sm:p-8 card-shadow space-y-6">
         <div className="grid sm:grid-cols-2 gap-5">
           <div>
             <label htmlFor="post-cat" className={labelCls}>1. Issue Category</label>
@@ -1207,10 +1216,10 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
             <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Hazard severity">
               {['Minor', 'Moderate', 'Major'].map(s => {
                 const active = severity === s;
-                const tone = s === 'Major' ? 'bg-[#F44336] text-white border-[#F44336]' : s === 'Moderate' ? 'bg-[#FF9800] text-black border-[#FF9800]' : 'bg-[#4A5C6A] text-[#CCD0CF] border-[#4A5C6A]';
+                const tone = s === 'Major' ? 'bg-[#F44336] text-white border-[#F44336]' : s === 'Moderate' ? 'bg-[#FF9800] text-black border-[#FF9800]' : 'bg-[#3B5378] text-[#FFF9D2] border-[#3B5378]';
                 return (
                   <button key={s} type="button" role="radio" aria-checked={active} onClick={() => setSeverity(s)}
-                    className={`py-3 rounded-lg text-[13px] uppercase font-bold border btn-interact ${active ? tone : 'bg-[#06141B] text-[#9BA8AB] border-[#9BA8AB]/30'}`}>
+                    className={`py-3 rounded-lg text-[13px] uppercase font-bold border btn-interact ${active ? tone : 'bg-[#121A2B] text-[#8CC0EB] border-[#8CC0EB]/30'}`}>
                     {s}
                   </button>
                 );
@@ -1229,7 +1238,7 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
           <textarea id="post-desc" required rows={4} maxLength={500} value={description} onChange={(e) => setDescription(e.target.value)}
             placeholder="Describe the defect, hazards caused, how long it has persisted, and the exact landmark…"
             className={`${inputCls} resize-none`} />
-          <span className="block text-right text-[11px] text-[#9BA8AB] mt-1">{description.length}/500</span>
+          <span className="block text-right text-[11px] text-[#8CC0EB] mt-1">{description.length}/500</span>
         </div>
 
         <div className="relative">
@@ -1251,15 +1260,15 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
               placeholder="Search ward, street name, or landmark…"
               className={`${inputCls} pl-10`}
             />
-            <Icon name="MapPin" size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9BA8AB]" />
+            <Icon name="MapPin" size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8CC0EB]" />
           </div>
 
           {suggestions.length > 0 && (
-            <ul className="absolute top-full left-0 right-0 mt-1 bg-[#11212D] border border-[#9BA8AB]/30 rounded-lg shadow-2xl z-20 overflow-hidden">
+            <ul className="absolute top-full left-0 right-0 mt-1 bg-[#1B263B] border border-[#8CC0EB]/30 rounded-lg shadow-2xl z-20 overflow-hidden">
               {suggestions.map((item) => (
                 <li key={item}>
                   <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => { setGeoLocation(item); setShowSuggestions(false); }}
-                    className="w-full text-left px-4 py-2.5 text-[14px] text-[#CCD0CF] hover:bg-[#253745] flex items-center gap-2 border-b border-[#253745] last:border-none">
+                    className="w-full text-left px-4 py-2.5 text-[14px] text-[#FFF9D2] hover:bg-[#2A3A55] flex items-center gap-2 border-b border-[#2A3A55] last:border-none">
                     <Icon name="MapPin" size={14} className="text-[#FF9800]" />
                     {item}
                   </button>
@@ -1274,8 +1283,8 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
             <div className="flex gap-3">
               <Icon name="AlertTriangle" size={20} className="text-[#FF9800] flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-[14px] font-semibold text-[#CCD0CF]">This looks already reported: {duplicate.id}</p>
-                <p className="text-[12px] text-[#9BA8AB]">"{duplicate.title}" · {duplicate.anumodanCount} Anumodan. Supporting it raises its priority faster than a duplicate.</p>
+                <p className="text-[14px] font-semibold text-[#FFF9D2]">This looks already reported: {duplicate.id}</p>
+                <p className="text-[12px] text-[#8CC0EB]">"{duplicate.title}" · {duplicate.anumodanCount} Anumodan. Supporting it raises its priority faster than a duplicate.</p>
               </div>
             </div>
             <button type="button" onClick={() => onSupportExisting(duplicate.id)} className="px-4 py-2 rounded-lg bg-[#FF9800] text-black text-[12px] uppercase font-bold whitespace-nowrap btn-interact">
@@ -1288,32 +1297,32 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
           <span className={labelCls}>6. Proof Photograph</span>
           <input type="file" ref={fileInputRef} accept="image/*" capture="environment" onChange={handleImagePick} className="hidden" />
           {previewImage ? (
-            <div className="relative rounded-lg overflow-hidden border border-[#9BA8AB]/30 bg-[#06141B]">
+            <div className="relative rounded-lg overflow-hidden border border-[#8CC0EB]/30 bg-[#121A2B]">
               <img src={previewImage} alt="Issue preview" className="w-full h-60 object-cover" />
-              <button type="button" aria-label="Remove photo" onClick={() => setPreviewImage(null)} className="absolute top-3 right-3 bg-[#06141B]/80 text-[#CCD0CF] hover:text-[#F44336] p-1.5 rounded-md btn-interact">
+              <button type="button" aria-label="Remove photo" onClick={() => setPreviewImage(null)} className="absolute top-3 right-3 bg-[#121A2B]/80 text-[#FFF9D2] hover:text-[#F44336] p-1.5 rounded-md btn-interact">
                 <Icon name="XCircle" size={20} />
               </button>
             </div>
           ) : (
             <button type="button" onClick={() => fileInputRef.current?.click()}
-              className="w-full py-8 border-2 border-dashed border-[#253745] hover:border-[#4A5C6A] rounded-lg bg-[#06141B]/60 flex flex-col items-center justify-center text-[#9BA8AB] hover:text-[#CCD0CF] btn-interact">
-              <Icon name="UploadCloud" size={36} className="text-[#4A5C6A] mb-2" />
+              className="w-full py-8 border-2 border-dashed border-[#2A3A55] hover:border-[#3B5378] rounded-lg bg-[#121A2B]/60 flex flex-col items-center justify-center text-[#8CC0EB] hover:text-[#FFF9D2] btn-interact">
+              <Icon name="UploadCloud" size={36} className="text-[#3B5378] mb-2" />
               <span className="text-[14px] font-semibold uppercase">Click to select issue photo</span>
-              <span className="text-[12px] text-[#9BA8AB] mt-1">JPG / PNG with camera EXIF metadata — optional but boosts credibility</span>
+              <span className="text-[12px] text-[#8CC0EB] mt-1">JPG / PNG with camera EXIF metadata — optional but boosts credibility</span>
             </button>
           )}
         </div>
 
-        <button type="submit" className="w-full py-3.5 bg-[#4A5C6A] hover:bg-[#6BBF4A] hover:text-black text-[#CCD0CF] font-semibold text-[16px] uppercase tracking-wider rounded-lg btn-interact border border-[#9BA8AB]/30 card-shadow">
+        <button type="submit" className="w-full py-3.5 bg-[#8CC0EB] hover:bg-[#6BBF4A] hover:text-black text-[#1B263B] font-bold font-semibold text-[16px] uppercase tracking-wider rounded-lg btn-interact border border-[#8CC0EB]/30 card-shadow">
           Submit Issue For Nivaran
         </button>
       </form>
 
       {showAnonModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="anon-title">
-          <div className="bg-[#11212D] border border-[#9BA8AB]/30 rounded-xl p-6 max-w-md w-full card-shadow">
-            <h3 id="anon-title" className="font-bebas text-[24px] text-[#CCD0CF] mb-2">Privacy Preference Check</h3>
-            <p className="text-[14px] text-[#9BA8AB] mb-6">Would you like to post this Awaaz anonymously on the public ward radar? Officers still see a verified-citizen flag either way.</p>
+          <div className="bg-[#1B263B] border border-[#8CC0EB]/30 rounded-xl p-6 max-w-md w-full card-shadow">
+            <h3 id="anon-title" className="font-bebas text-[24px] text-[#FFF9D2] mb-2">Privacy Preference Check</h3>
+            <p className="text-[14px] text-[#8CC0EB] mb-6">Would you like to post this Awaaz anonymously on the public ward radar? Officers still see a verified-citizen flag either way.</p>
 
             <div className="space-y-3 mb-6">
               {[
@@ -1323,13 +1332,13 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
                 const active = isAnonymous === val;
                 return (
                   <button key={String(val)} type="button" onClick={() => setIsAnonymous(val)}
-                    className={`w-full text-left flex items-center gap-3 p-3.5 rounded-lg border btn-interact ${active ? 'bg-[#253745] border-[#6BBF4A]' : 'bg-[#06141B] border-[#9BA8AB]/20'}`}>
-                    <span className={`w-4 h-4 rounded-full border flex items-center justify-center flex-shrink-0 ${active ? 'border-[#6BBF4A]' : 'border-[#9BA8AB]'}`}>
+                    className={`w-full text-left flex items-center gap-3 p-3.5 rounded-lg border btn-interact ${active ? 'bg-[#2A3A55] border-[#6BBF4A]' : 'bg-[#121A2B] border-[#8CC0EB]/20'}`}>
+                    <span className={`w-4 h-4 rounded-full border flex items-center justify-center flex-shrink-0 ${active ? 'border-[#6BBF4A]' : 'border-[#8CC0EB]'}`}>
                       {active && <span className="w-2 h-2 rounded-full bg-[#6BBF4A]" />}
                     </span>
                     <span>
-                      <span className="block text-[14px] font-semibold text-[#CCD0CF]">{head}</span>
-                      <span className="text-[11px] text-[#9BA8AB]">{sub}</span>
+                      <span className="block text-[14px] font-semibold text-[#FFF9D2]">{head}</span>
+                      <span className="text-[11px] text-[#8CC0EB]">{sub}</span>
                     </span>
                   </button>
                 );
@@ -1337,7 +1346,7 @@ function ScreenPostAwaaz({ user, issues, onCancel, onSubmit, onSupportExisting }
             </div>
 
             <div className="flex gap-3">
-              <button type="button" onClick={() => setShowAnonModal(false)} className="flex-1 py-2.5 bg-[#253745] text-[#9BA8AB] uppercase font-semibold rounded-lg text-[14px] btn-interact">Back</button>
+              <button type="button" onClick={() => setShowAnonModal(false)} className="flex-1 py-2.5 bg-[#2A3A55] text-[#8CC0EB] uppercase font-semibold rounded-lg text-[14px] btn-interact">Back</button>
               <button type="button" onClick={handleFinalSubmit} className="flex-1 py-2.5 bg-[#6BBF4A] text-black uppercase font-bold rounded-lg text-[14px] btn-interact">Confirm & Post</button>
             </div>
           </div>
@@ -1382,46 +1391,46 @@ function ScreenOfficerTaskBoard({ issues, user, onClaim, onOpenSaboot, onOpenPra
       {tab === 'queue' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {queue.length === 0 ? (
-            <div className="md:col-span-2 bg-[#11212D] rounded-xl border border-[#9BA8AB]/15 p-12 text-center">
+            <div className="md:col-span-2 bg-[#1B263B] rounded-xl border border-[#8CC0EB]/15 p-12 text-center">
               <Icon name="CheckCircle2" size={32} className="mx-auto text-[#6BBF4A] mb-3" />
-              <h3 className="font-bebas text-[20px] text-[#CCD0CF]">All issues claimed</h3>
-              <p className="text-[14px] text-[#9BA8AB]">No pending unassigned civic defects in your jurisdiction.</p>
+              <h3 className="font-bebas text-[20px] text-[#FFF9D2]">All issues claimed</h3>
+              <p className="text-[14px] text-[#8CC0EB]">No pending unassigned civic defects in your jurisdiction.</p>
             </div>
           ) : (
             queue.map((issue, idx) => (
-              <div key={issue.id} className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl overflow-hidden card-shadow flex flex-col">
-                <div className="relative h-44 w-full bg-[#06141B]">
+              <div key={issue.id} className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl overflow-hidden card-shadow flex flex-col">
+                <div className="relative h-44 w-full bg-[#121A2B]">
                   <IssueImage src={issue.image} category={issue.category} alt={issue.title} className="w-full h-full" />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#11212D]/90 text-[11px] uppercase font-semibold rounded text-[#CCD0CF]">#{idx + 1} · {issue.category}</span>
+                  <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#1B263B]/90 text-[11px] uppercase font-semibold rounded text-[#FFF9D2]">#{idx + 1} · {issue.category}</span>
                   <span className={`absolute top-3 right-3 px-2.5 py-1 text-[11px] uppercase font-semibold rounded ${
-                    issue.severity === 'Major' ? 'bg-[#F44336] text-white' : issue.severity === 'Moderate' ? 'bg-[#FF9800] text-black' : 'bg-[#4A5C6A] text-[#CCD0CF]'
+                    issue.severity === 'Major' ? 'bg-[#F44336] text-white' : issue.severity === 'Moderate' ? 'bg-[#FF9800] text-black' : 'bg-[#3B5378] text-[#FFF9D2]'
                   }`}>{issue.severity}</span>
                 </div>
 
                 <div className="p-5 flex-1">
-                  <h3 className="font-bebas text-[20px] text-[#CCD0CF] mb-1 line-clamp-1">{issue.title}</h3>
-                  <div className="flex items-center gap-1.5 text-[12px] text-[#9BA8AB] mb-2">
+                  <h3 className="font-bebas text-[20px] text-[#FFF9D2] mb-1 line-clamp-1">{issue.title}</h3>
+                  <div className="flex items-center gap-1.5 text-[12px] text-[#8CC0EB] mb-2">
                     <Icon name="MapPin" size={14} className="text-[#FF9800] flex-shrink-0" />
                     <span className="truncate">{issue.location}</span>
                     <span>·</span>
                     <span className="whitespace-nowrap">{relativeDate(issue.createdAt)}</span>
                   </div>
-                  <p className="text-[14px] text-[#CCD0CF]/80 line-clamp-2 mb-4">{issue.description}</p>
+                  <p className="text-[14px] text-[#FFF9D2]/80 line-clamp-2 mb-4">{issue.description}</p>
 
                   <div>
                     <div className="flex justify-between text-[11px] uppercase font-semibold mb-1">
-                      <span className="text-[#9BA8AB]">Priority score</span>
-                      <span className="text-[#FF9800]">{priorityScore(issue)} <span className="text-[#9BA8AB] normal-case font-normal">({issue.anumodanCount} votes × {SEVERITY_WEIGHT[issue.severity]})</span></span>
+                      <span className="text-[#8CC0EB]">Priority score</span>
+                      <span className="text-[#FF9800]">{priorityScore(issue)} <span className="text-[#8CC0EB] normal-case font-normal">({issue.anumodanCount} votes × {SEVERITY_WEIGHT[issue.severity]})</span></span>
                     </div>
-                    <div className="h-1.5 bg-[#06141B] rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-[#121A2B] rounded-full overflow-hidden">
                       <div className="h-full bg-[#FF9800] rounded-full" style={{ width: `${(priorityScore(issue) / topScore) * 100}%` }} />
                     </div>
                   </div>
                 </div>
 
-                <div className="px-5 py-4 flex items-center justify-between border-t border-[#253745]">
-                  <span className="text-[12px] text-[#9BA8AB]">Benchmark fix: <strong className="text-[#CCD0CF]">{formatINR(CATEGORIES[issue.category].benchmark)}</strong></span>
-                  <button onClick={() => onClaim(issue.id)} className="px-5 py-2 bg-[#4A5C6A] hover:bg-[#6BBF4A] hover:text-black text-[#CCD0CF] uppercase font-semibold text-[13px] rounded-lg btn-interact border border-[#9BA8AB]/20">
+                <div className="px-5 py-4 flex items-center justify-between border-t border-[#2A3A55]">
+                  <span className="text-[12px] text-[#8CC0EB]">Benchmark fix: <strong className="text-[#FFF9D2]">{formatINR(CATEGORIES[issue.category].benchmark)}</strong></span>
+                  <button onClick={() => onClaim(issue.id)} className="px-5 py-2 bg-[#8CC0EB] hover:bg-[#6BBF4A] hover:text-black text-[#1B263B] font-bold uppercase font-semibold text-[13px] rounded-lg btn-interact border border-[#8CC0EB]/20">
                     Claim Issue
                   </button>
                 </div>
@@ -1434,9 +1443,9 @@ function ScreenOfficerTaskBoard({ issues, user, onClaim, onOpenSaboot, onOpenPra
       {tab === 'claimed' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {mine.length === 0 ? (
-            <div className="md:col-span-2 bg-[#11212D] rounded-xl border border-[#9BA8AB]/15 p-12 text-center">
-              <h3 className="font-bebas text-[20px] text-[#CCD0CF]">Workspace empty</h3>
-              <p className="text-[14px] text-[#9BA8AB]">Claim an issue from the queue to start work and submit Saboot proof.</p>
+            <div className="md:col-span-2 bg-[#1B263B] rounded-xl border border-[#8CC0EB]/15 p-12 text-center">
+              <h3 className="font-bebas text-[20px] text-[#FFF9D2]">Workspace empty</h3>
+              <p className="text-[14px] text-[#8CC0EB]">Claim an issue from the queue to start work and submit Saboot proof.</p>
             </div>
           ) : (
             mine.map((issue) => {
@@ -1445,27 +1454,27 @@ function ScreenOfficerTaskBoard({ issues, user, onClaim, onOpenSaboot, onOpenPra
                 <button
                   key={issue.id}
                   onClick={() => (needsProof ? onOpenSaboot(issue) : onOpenPramaan(issue))}
-                  className={`text-left bg-[#11212D] border rounded-xl card-shadow p-5 btn-interact ${
-                    needsProof ? 'border-[#FF9800]/40 hover:border-[#FF9800]' : issue.status === 'Flagged' ? 'border-[#F44336]/40' : 'border-[#9BA8AB]/20 hover:border-[#6BBF4A]/50'
+                  className={`text-left bg-[#1B263B] border rounded-xl card-shadow p-5 btn-interact ${
+                    needsProof ? 'border-[#FF9800]/40 hover:border-[#FF9800]' : issue.status === 'Flagged' ? 'border-[#F44336]/40' : 'border-[#8CC0EB]/20 hover:border-[#6BBF4A]/50'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3 gap-2">
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-2.5 py-0.5 rounded text-[11px] uppercase font-semibold bg-[#253745] text-[#9BA8AB]">{issue.category}</span>
+                      <span className="px-2.5 py-0.5 rounded text-[11px] uppercase font-semibold bg-[#2A3A55] text-[#8CC0EB]">{issue.category}</span>
                       <StatusBadge status={issue.status} />
                     </div>
-                    <span className="text-[12px] text-[#9BA8AB] font-mono">{issue.id}</span>
+                    <span className="text-[12px] text-[#8CC0EB] font-mono">{issue.id}</span>
                   </div>
 
-                  <h3 className="font-bebas text-[20px] text-[#CCD0CF] mb-1">{issue.title}</h3>
-                  <p className="text-[12px] text-[#9BA8AB] mb-4 flex items-center gap-1">
+                  <h3 className="font-bebas text-[20px] text-[#FFF9D2] mb-1">{issue.title}</h3>
+                  <p className="text-[12px] text-[#8CC0EB] mb-4 flex items-center gap-1">
                     <Icon name="MapPin" size={14} className="text-[#FF9800]" />
                     {issue.location}
                   </p>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-[#253745]">
-                    <span className="text-[13px] text-[#9BA8AB]">
-                      {issue.verification ? <>Confidence <strong className="text-[#CCD0CF]">{issue.verification.confidence}%</strong></> : 'Proof pending'}
+                  <div className="flex items-center justify-between pt-3 border-t border-[#2A3A55]">
+                    <span className="text-[13px] text-[#8CC0EB]">
+                      {issue.verification ? <>Confidence <strong className="text-[#FFF9D2]">{issue.verification.confidence}%</strong></> : 'Proof pending'}
                     </span>
                     <span className={`text-[13px] uppercase font-semibold ${needsProof ? 'text-[#FF9800]' : issue.status === 'Flagged' ? 'text-[#F44336]' : 'text-[#6BBF4A]'}`}>
                       {needsProof ? 'Submit Saboot Proof →' : 'View Pramaan Audit →'}
@@ -1546,19 +1555,19 @@ function ScreenSabootSubmission({ issue, onBack, onSubmit }) {
       <span className={labelCls}>{label}</span>
       <input type="file" ref={inputRef} accept="image/*" capture="environment" className="hidden" onChange={onChange} />
       {image ? (
-        <div className={`relative rounded-lg overflow-hidden border h-48 bg-[#06141B] ${tone === 'green' ? 'border-[#6BBF4A]/40' : 'border-[#9BA8AB]/20'}`}>
+        <div className={`relative rounded-lg overflow-hidden border h-48 bg-[#121A2B] ${tone === 'green' ? 'border-[#6BBF4A]/40' : 'border-[#8CC0EB]/20'}`}>
           <IssueImage src={image} category={issue.category} alt={label} className="w-full h-full" />
           {tone === 'green' && <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#6BBF4A] text-black text-[10px] font-bold uppercase rounded">Resolved Proof</span>}
-          <button type="button" onClick={() => inputRef.current?.click()} className="absolute bottom-2 right-2 px-2.5 py-1 bg-[#11212D]/90 text-[11px] text-[#CCD0CF] uppercase font-semibold rounded btn-interact">Change</button>
+          <button type="button" onClick={() => inputRef.current?.click()} className="absolute bottom-2 right-2 px-2.5 py-1 bg-[#1B263B]/90 text-[11px] text-[#FFF9D2] uppercase font-semibold rounded btn-interact">Change</button>
         </div>
       ) : (
-        <div className={`h-48 border-2 border-dashed rounded-lg bg-[#06141B] flex flex-col items-center justify-center gap-2 ${tone === 'green' ? 'border-[#6BBF4A]/40' : 'border-[#253745]'}`}>
-          <button type="button" onClick={() => inputRef.current?.click()} className="flex flex-col items-center text-[#9BA8AB] hover:text-[#CCD0CF] btn-interact">
-            <Icon name="UploadCloud" size={28} className={`mb-1 ${tone === 'green' ? 'text-[#6BBF4A]' : 'text-[#4A5C6A]'}`} />
+        <div className={`h-48 border-2 border-dashed rounded-lg bg-[#121A2B] flex flex-col items-center justify-center gap-2 ${tone === 'green' ? 'border-[#6BBF4A]/40' : 'border-[#2A3A55]'}`}>
+          <button type="button" onClick={() => inputRef.current?.click()} className="flex flex-col items-center text-[#8CC0EB] hover:text-[#FFF9D2] btn-interact">
+            <Icon name="UploadCloud" size={28} className={`mb-1 ${tone === 'green' ? 'text-[#6BBF4A]' : 'text-[#3B5378]'}`} />
             <span className={`text-[13px] uppercase font-semibold ${tone === 'green' ? 'text-[#6BBF4A]' : ''}`}>Upload photo</span>
-            {hint && <span className="text-[11px] text-[#9BA8AB] mt-0.5">{hint}</span>}
+            {hint && <span className="text-[11px] text-[#8CC0EB] mt-0.5">{hint}</span>}
           </button>
-          {onSample && <button type="button" onClick={onSample} className="text-[11px] uppercase font-semibold text-[#9BA8AB] underline underline-offset-2 hover:text-[#CCD0CF]">or use demo sample</button>}
+          {onSample && <button type="button" onClick={onSample} className="text-[11px] uppercase font-semibold text-[#8CC0EB] underline underline-offset-2 hover:text-[#FFF9D2]">or use demo sample</button>}
         </div>
       )}
     </div>
@@ -1568,26 +1577,26 @@ function ScreenSabootSubmission({ issue, onBack, onSubmit }) {
     <div className="max-w-4xl mx-auto w-full">
       <PageHeader title="SUBMIT SABOOT (PROOF OF WORK)" subtitle={`Case ${issue.id} — ${issue.title}`} onBack={onBack} />
 
-      <form onSubmit={handleSubmit} className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-5 sm:p-8 card-shadow space-y-6">
+      <form onSubmit={handleSubmit} className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-5 sm:p-8 card-shadow space-y-6">
         <div className="grid sm:grid-cols-2 gap-6">
           <ImageSlot label="1. Before image (from citizen report)" image={beforeImage} inputRef={beforeInputRef} onChange={pickImage(setBeforeImage)} />
           <ImageSlot label="2. After image (mandatory)" image={afterImage} inputRef={afterInputRef} onChange={pickImage(setAfterImage)} tone="green"
             hint="Must be captured at the defect site" onSample={() => setAfterImage(SAMPLE_AFTER_IMG)} />
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-[#253745]">
+        <div className="grid sm:grid-cols-2 gap-6 pt-4 border-t border-[#2A3A55]">
           <div>
             <span className={labelCls}>3. Cost report & receipts (PDF / image)</span>
             <input type="file" ref={receiptInputRef} accept="image/*,application/pdf" className="hidden" onChange={(e) => e.target.files?.[0] && setReceiptFile(e.target.files[0].name)} />
-            <button type="button" onClick={() => receiptInputRef.current?.click()} className="w-full py-3 px-4 border border-[#9BA8AB]/30 rounded-lg bg-[#06141B] flex items-center justify-between gap-3 text-[#CCD0CF] btn-interact">
+            <button type="button" onClick={() => receiptInputRef.current?.click()} className="w-full py-3 px-4 border border-[#8CC0EB]/30 rounded-lg bg-[#121A2B] flex items-center justify-between gap-3 text-[#FFF9D2] btn-interact">
               <span className="text-[14px] truncate flex items-center gap-2">
-                <Icon name="FileText" size={16} className="text-[#9BA8AB] flex-shrink-0" />
+                <Icon name="FileText" size={16} className="text-[#8CC0EB] flex-shrink-0" />
                 {receiptFile || 'Select contractor invoice / bill'}
               </span>
               <span className="text-[12px] uppercase font-semibold text-[#6BBF4A]">{receiptFile ? 'Attached' : 'Browse'}</span>
             </button>
             {!receiptFile && (
-              <button type="button" onClick={() => setReceiptFile(`invoice_${issue.id}.pdf`)} className="mt-1.5 text-[11px] uppercase font-semibold text-[#9BA8AB] underline underline-offset-2 hover:text-[#CCD0CF]">
+              <button type="button" onClick={() => setReceiptFile(`invoice_${issue.id}.pdf`)} className="mt-1.5 text-[11px] uppercase font-semibold text-[#8CC0EB] underline underline-offset-2 hover:text-[#FFF9D2]">
                 or attach demo invoice
               </button>
             )}
@@ -1596,8 +1605,8 @@ function ScreenSabootSubmission({ issue, onBack, onSubmit }) {
           <div>
             <label htmlFor="saboot-amt" className={labelCls}>4. Amount spent (INR ₹)</label>
             <input id="saboot-amt" type="number" min="1" inputMode="numeric" required value={amountSpent} onChange={(e) => setAmountSpent(e.target.value)} placeholder={`Benchmark ${formatINR(bench)}`} className={inputCls} />
-            <p className="text-[12px] mt-1.5 text-[#9BA8AB]">
-              PWD benchmark for {issue.category}: <strong className="text-[#CCD0CF]">{formatINR(bench)}</strong>
+            <p className="text-[12px] mt-1.5 text-[#8CC0EB]">
+              PWD benchmark for {issue.category}: <strong className="text-[#FFF9D2]">{formatINR(bench)}</strong>
               {variance !== null && (
                 <span className={`ml-2 font-semibold ${variance <= COST_TOLERANCE ? 'text-[#6BBF4A]' : 'text-[#F44336]'}`}>
                   {variance <= 0 ? `${Math.abs(Math.round(variance * 100))}% under` : `${Math.round(variance * 100)}% over`}
@@ -1614,40 +1623,40 @@ function ScreenSabootSubmission({ issue, onBack, onSubmit }) {
             placeholder="Repair method, material grade, contractor name, and guarantee period…" className={`${inputCls} resize-none`} />
         </div>
 
-        <div className="p-4 rounded-lg bg-[#06141B] border border-[#9BA8AB]/20 grid sm:grid-cols-2 gap-4">
+        <div className="p-4 rounded-lg bg-[#121A2B] border border-[#8CC0EB]/20 grid sm:grid-cols-2 gap-4">
           <div>
-            <span className="block text-[11px] uppercase tracking-wider text-[#9BA8AB] font-semibold mb-1">🔒 Auto-captured geo tag</span>
-            <div className="flex items-center gap-2 text-[13px] text-[#CCD0CF] font-mono">
+            <span className="block text-[11px] uppercase tracking-wider text-[#8CC0EB] font-semibold mb-1">🔒 Auto-captured geo tag</span>
+            <div className="flex items-center gap-2 text-[13px] text-[#FFF9D2] font-mono">
               <Icon name="MapPin" size={16} className="text-[#FF9800] flex-shrink-0" />
               <span>{simGpsMismatch ? '12.9352° N, 77.6245° E (1.8 km off-site)' : issue.location}</span>
             </div>
           </div>
           <div>
-            <span className="block text-[11px] uppercase tracking-wider text-[#9BA8AB] font-semibold mb-1">⏰ Hardware NTP timestamp</span>
-            <div className="flex items-center gap-2 text-[13px] text-[#CCD0CF] font-mono">
+            <span className="block text-[11px] uppercase tracking-wider text-[#8CC0EB] font-semibold mb-1">⏰ Hardware NTP timestamp</span>
+            <div className="flex items-center gap-2 text-[13px] text-[#FFF9D2] font-mono">
               <Icon name="Clock" size={16} className="text-[#6BBF4A] flex-shrink-0" />
               <span>{autoTimestamp}</span>
             </div>
           </div>
         </div>
 
-        <details className="rounded-lg border border-dashed border-[#9BA8AB]/30 p-4 group">
-          <summary className="text-[12px] uppercase font-bold text-[#9BA8AB] cursor-pointer select-none">⚖️ Judge test tools — simulate a failing audit</summary>
+        <details className="rounded-lg border border-dashed border-[#8CC0EB]/30 p-4 group">
+          <summary className="text-[12px] uppercase font-bold text-[#8CC0EB] cursor-pointer select-none">⚖️ Judge test tools — simulate a failing audit</summary>
           <div className="mt-3 grid sm:grid-cols-2 gap-3">
             {([
               [simGpsMismatch, setSimGpsMismatch, 'Photo taken off-site', 'GPS metadata 1.8 km from the defect'],
               [simTamper, setSimTamper, 'Edited after-photo', 'EXIF conflict + clone-stamp artefacts'],
             ] as [boolean, (v: boolean) => void, string, string][]).map(([val, set, head, sub]) => (
-              <label key={head} className="flex items-start gap-3 p-3 rounded-lg bg-[#06141B] cursor-pointer">
+              <label key={head} className="flex items-start gap-3 p-3 rounded-lg bg-[#121A2B] cursor-pointer">
                 <input type="checkbox" checked={val} onChange={(e) => set(e.target.checked)} className="mt-1 accent-[#F44336]" />
                 <span>
-                  <span className="block text-[13px] font-semibold text-[#CCD0CF]">{head}</span>
-                  <span className="text-[11px] text-[#9BA8AB]">{sub}</span>
+                  <span className="block text-[13px] font-semibold text-[#FFF9D2]">{head}</span>
+                  <span className="text-[11px] text-[#8CC0EB]">{sub}</span>
                 </span>
               </label>
             ))}
           </div>
-          <p className="text-[11px] text-[#9BA8AB] mt-2">Tip: entering an amount more than 15% over benchmark also triggers a flag.</p>
+          <p className="text-[11px] text-[#8CC0EB] mt-2">Tip: entering an amount more than 15% over benchmark also triggers a flag.</p>
         </details>
 
         <div>
@@ -1655,12 +1664,12 @@ function ScreenSabootSubmission({ issue, onBack, onSubmit }) {
             type="submit"
             disabled={!isFormValid || submitting}
             className={`w-full py-4 rounded-lg font-semibold text-[16px] uppercase tracking-wider btn-interact card-shadow border ${
-              isFormValid ? 'bg-[#4A5C6A] hover:bg-[#6BBF4A] hover:text-black text-[#CCD0CF] border-[#9BA8AB]/30' : 'bg-[#253745]/50 text-[#9BA8AB]/50 border-transparent cursor-not-allowed'
+              isFormValid ? 'bg-[#8CC0EB] hover:bg-[#6BBF4A] hover:text-black text-[#1B263B] font-bold border-[#8CC0EB]/30' : 'bg-[#2A3A55]/50 text-[#8CC0EB]/50 border-transparent cursor-not-allowed'
             }`}
           >
             {submitting ? 'Sealing evidence packet…' : 'Submit Saboot for Pramaan AI Verification'}
           </button>
-          {!isFormValid && <p className="text-[12px] text-[#9BA8AB] mt-2 text-center">Still needed: {missing.join(', ')}</p>}
+          {!isFormValid && <p className="text-[12px] text-[#8CC0EB] mt-2 text-center">Still needed: {missing.join(', ')}</p>}
         </div>
       </form>
     </div>
@@ -1679,7 +1688,7 @@ type AuditCheckProps = {
 function AuditCheck({ visible, ok, title, detail, verdictOk, verdictFail, children }: AuditCheckProps) {
   return (
     <div className={`p-5 rounded-xl border transition-all duration-500 ${
-      visible ? `bg-[#11212D] opacity-100 translate-y-0 card-shadow ${ok ? 'border-[#9BA8AB]/20' : 'border-[#F44336]/50'}` : 'bg-[#11212D]/20 border-transparent opacity-0 translate-y-4'
+      visible ? `bg-[#1B263B] opacity-100 translate-y-0 card-shadow ${ok ? 'border-[#8CC0EB]/20' : 'border-[#F44336]/50'}` : 'bg-[#1B263B]/20 border-transparent opacity-0 translate-y-4'
     }`}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-4">
@@ -1687,8 +1696,8 @@ function AuditCheck({ visible, ok, title, detail, verdictOk, verdictFail, childr
             <Icon name={ok ? 'CheckCircle2' : 'XCircle'} size={22} />
           </div>
           <div>
-            <h4 className="font-bebas text-[18px] text-[#CCD0CF]">{title}</h4>
-            <p className="text-[12px] text-[#9BA8AB]">{detail}</p>
+            <h4 className="font-bebas text-[18px] text-[#FFF9D2]">{title}</h4>
+            <p className="text-[12px] text-[#8CC0EB]">{detail}</p>
           </div>
         </div>
         <span className={`font-bebas text-[18px] whitespace-nowrap sm:pl-4 ${ok ? 'text-[#6BBF4A]' : 'text-[#F44336]'}`}>
@@ -1736,12 +1745,12 @@ function ScreenAIVerification({ issue, pendingIssue, auditedIssues, user, onSele
     return (
       <div className="max-w-4xl mx-auto w-full">
         {header}
-        <div className="bg-[#11212D] rounded-xl border border-[#9BA8AB]/15 p-12 text-center">
-          <Icon name="ShieldCheck" size={36} className="mx-auto text-[#4A5C6A] mb-3" />
-          <h3 className="font-bebas text-[22px] text-[#CCD0CF]">
+        <div className="bg-[#1B263B] rounded-xl border border-[#8CC0EB]/15 p-12 text-center">
+          <Icon name="ShieldCheck" size={36} className="mx-auto text-[#3B5378] mb-3" />
+          <h3 className="font-bebas text-[22px] text-[#FFF9D2]">
             {pendingIssue ? `${pendingIssue.id} has not been audited yet` : 'Pick a case to inspect'}
           </h3>
-          <p className="text-[14px] text-[#9BA8AB] max-w-md mx-auto mt-1">
+          <p className="text-[14px] text-[#8CC0EB] max-w-md mx-auto mt-1">
             {pendingIssue
               ? 'Pramaan runs automatically once the assigned officer submits Saboot proof (after photo, receipt and cost).'
               : 'Choose any audited case from the selector above to replay its verification.'}
@@ -1760,13 +1769,13 @@ function ScreenAIVerification({ issue, pendingIssue, auditedIssues, user, onSele
     <div className="max-w-4xl mx-auto w-full">
       {header}
 
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 p-4 rounded-xl bg-[#11212D] border border-[#9BA8AB]/15">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 p-4 rounded-xl bg-[#1B263B] border border-[#8CC0EB]/15">
         <div className="min-w-0">
-          <span className="text-[11px] uppercase text-[#9BA8AB] font-semibold">Case under audit</span>
-          <p className="font-bebas text-[20px] text-[#CCD0CF] leading-tight truncate">{issue.id} — {issue.title}</p>
-          <p className="text-[12px] text-[#9BA8AB]">Audited {v.auditedAt} · Officer {issue.claimedBy}</p>
+          <span className="text-[11px] uppercase text-[#8CC0EB] font-semibold">Case under audit</span>
+          <p className="font-bebas text-[20px] text-[#FFF9D2] leading-tight truncate">{issue.id} — {issue.title}</p>
+          <p className="text-[12px] text-[#8CC0EB]">Audited {v.auditedAt} · Officer {issue.claimedBy}</p>
         </div>
-        <button onClick={() => setRunKey(k => k + 1)} className="px-3 py-2 rounded-lg bg-[#253745] text-[#CCD0CF] text-[12px] uppercase font-bold flex items-center gap-2 btn-interact border border-[#9BA8AB]/20">
+        <button onClick={() => setRunKey(k => k + 1)} className="px-3 py-2 rounded-lg bg-[#2A3A55] text-[#FFF9D2] text-[12px] uppercase font-bold flex items-center gap-2 btn-interact border border-[#8CC0EB]/20">
           <Icon name="RefreshCw" size={14} /> Replay audit
         </button>
       </div>
@@ -1784,22 +1793,22 @@ function ScreenAIVerification({ issue, pendingIssue, auditedIssues, user, onSele
           detail={`Claimed cost evaluated against the PWD schedule of rates (±${COST_TOLERANCE * 100}% tolerance).`}
           verdictOk={`${variancePct <= 0 ? `${Math.abs(variancePct)}% under` : `${variancePct}% over`}`}
           verdictFail={`${variancePct}% over`}>
-          <div className="bg-[#06141B] p-4 rounded-lg border border-[#9BA8AB]/15 space-y-3 mt-4">
+          <div className="bg-[#121A2B] p-4 rounded-lg border border-[#8CC0EB]/15 space-y-3 mt-4">
             {[
-              ['Officer reported cost', v.reportedCost, v.costOk ? '#6BBF4A' : '#F44336', 'text-[#CCD0CF]'],
-              ['PWD category benchmark', v.benchCost, '#4A5C6A', 'text-[#9BA8AB]'],
+              ['Officer reported cost', v.reportedCost, v.costOk ? '#6BBF4A' : '#F44336', 'text-[#FFF9D2]'],
+              ['PWD category benchmark', v.benchCost, '#3B5378', 'text-[#8CC0EB]'],
             ].map(([label, val, color, textCls]) => (
               <div key={label}>
                 <div className="flex justify-between text-[12px] mb-1 font-semibold">
                   <span className={textCls}>{label}</span>
-                  <span style={{ color: color === '#4A5C6A' ? '#9BA8AB' : color }}>{formatINR(val)}</span>
+                  <span style={{ color: color === '#3B5378' ? '#8CC0EB' : color }}>{formatINR(val)}</span>
                 </div>
-                <div className="h-3.5 bg-[#253745] rounded-full overflow-hidden relative">
+                <div className="h-3.5 bg-[#2A3A55] rounded-full overflow-hidden relative">
                   <div className="h-full rounded-full transition-all duration-1000" style={{ width: step >= 3 ? `${(val / scale) * 100}%` : '0%', background: color }} />
                 </div>
               </div>
             ))}
-            <p className="text-[11px] text-[#9BA8AB]">Tolerance ceiling: {formatINR(v.benchCost * (1 + COST_TOLERANCE))}</p>
+            <p className="text-[11px] text-[#8CC0EB]">Tolerance ceiling: {formatINR(v.benchCost * (1 + COST_TOLERANCE))}</p>
           </div>
         </AuditCheck>
 
@@ -1807,61 +1816,61 @@ function ScreenAIVerification({ issue, pendingIssue, auditedIssues, user, onSele
           detail="Error Level Analysis, GAN artefact scan and camera sensor-noise consistency."
           verdictOk="None detected" verdictFail="EXIF conflict" />
 
-        <div className={`p-5 rounded-xl border transition-all duration-500 ${step >= 5 ? 'bg-[#11212D] border-[#9BA8AB]/20 opacity-100 translate-y-0 card-shadow' : 'bg-[#11212D]/20 border-transparent opacity-0 translate-y-4'}`}>
-          <h4 className="font-bebas text-[18px] text-[#CCD0CF] mb-3">5. Visual feature correspondence (before / after)</h4>
+        <div className={`p-5 rounded-xl border transition-all duration-500 ${step >= 5 ? 'bg-[#1B263B] border-[#8CC0EB]/20 opacity-100 translate-y-0 card-shadow' : 'bg-[#1B263B]/20 border-transparent opacity-0 translate-y-4'}`}>
+          <h4 className="font-bebas text-[18px] text-[#FFF9D2] mb-3">5. Visual feature correspondence (before / after)</h4>
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div>
-              <span className="block text-[11px] uppercase font-bold text-[#9BA8AB] mb-1.5">Original citizen defect</span>
-              <div className="h-36 sm:h-44 rounded-lg overflow-hidden border border-[#9BA8AB]/20 bg-[#06141B]">
+              <span className="block text-[11px] uppercase font-bold text-[#8CC0EB] mb-1.5">Original citizen defect</span>
+              <div className="h-36 sm:h-44 rounded-lg overflow-hidden border border-[#8CC0EB]/20 bg-[#121A2B]">
                 <IssueImage src={v.beforeImg} category={issue.category} alt="Before" className="w-full h-full" />
               </div>
             </div>
             <div>
               <span className="block text-[11px] uppercase font-bold text-[#6BBF4A] mb-1.5">Saboot resolution proof</span>
-              <div className="h-36 sm:h-44 rounded-lg overflow-hidden border border-[#6BBF4A]/40 bg-[#06141B]">
+              <div className="h-36 sm:h-44 rounded-lg overflow-hidden border border-[#6BBF4A]/40 bg-[#121A2B]">
                 <IssueImage src={v.afterImg} category={issue.category} alt="After" className="w-full h-full" />
               </div>
             </div>
           </div>
-          {v.workNotes && <p className="text-[13px] text-[#CCD0CF]/85 mt-3"><span className="text-[#9BA8AB] uppercase text-[11px] font-semibold">Officer notes: </span>{v.workNotes}</p>}
+          {v.workNotes && <p className="text-[13px] text-[#FFF9D2]/85 mt-3"><span className="text-[#8CC0EB] uppercase text-[11px] font-semibold">Officer notes: </span>{v.workNotes}</p>}
         </div>
 
-        <div className={`p-6 rounded-xl border transition-all duration-700 ${step >= 6 ? 'bg-[#11212D] border-[#9BA8AB]/30 opacity-100 translate-y-0 card-shadow' : 'bg-[#11212D]/20 border-transparent opacity-0 translate-y-4'}`}>
+        <div className={`p-6 rounded-xl border transition-all duration-700 ${step >= 6 ? 'bg-[#1B263B] border-[#8CC0EB]/30 opacity-100 translate-y-0 card-shadow' : 'bg-[#1B263B]/20 border-transparent opacity-0 translate-y-4'}`}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <h4 className="font-bebas text-[24px] text-[#CCD0CF] mb-1">6. Pramaan composite confidence</h4>
-              <p className="text-[13px] text-[#9BA8AB] max-w-md">
+              <h4 className="font-bebas text-[24px] text-[#FFF9D2] mb-1">6. Pramaan composite confidence</h4>
+              <p className="text-[13px] text-[#8CC0EB] max-w-md">
                 Weighted across geospatial integrity, timestamp sequence, photo forensics and cost tolerance. Auto-approval threshold: {APPROVAL_THRESHOLD}%.
               </p>
             </div>
 
             <div className="relative w-28 h-28 flex items-center justify-center flex-shrink-0">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="40" stroke="#253745" strokeWidth="8" fill="transparent" />
+                <circle cx="50" cy="50" r="40" stroke="#2A3A55" strokeWidth="8" fill="transparent" />
                 <circle cx="50" cy="50" r="40" stroke={v.approved ? '#6BBF4A' : '#F44336'} strokeWidth="8"
                   strokeDasharray="251.2" strokeDashoffset={step >= 6 ? 251.2 - (251.2 * v.confidence) / 100 : 251.2}
                   strokeLinecap="round" fill="transparent" className="transition-all duration-1000 ease-out" />
               </svg>
               <div className="absolute flex flex-col items-center justify-center">
-                <span className="font-bebas text-[28px] text-[#CCD0CF] leading-none">{v.confidence}%</span>
-                <span className="text-[9px] uppercase text-[#9BA8AB] font-bold">Confidence</span>
+                <span className="font-bebas text-[28px] text-[#FFF9D2] leading-none">{v.confidence}%</span>
+                <span className="text-[9px] uppercase text-[#8CC0EB] font-bold">Confidence</span>
               </div>
             </div>
           </div>
 
           {step >= 6 && (
-            <div className="mt-6 pt-6 border-t border-[#253745]">
+            <div className="mt-6 pt-6 border-t border-[#2A3A55]">
               {v.approved ? (
                 <div className="p-4 rounded-xl bg-[#6BBF4A]/15 border border-[#6BBF4A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#6BBF4A] text-black flex items-center justify-center font-bold flex-shrink-0">✓</div>
                     <div>
                       <h3 className="font-bebas text-[22px] text-[#6BBF4A] leading-tight m-0">Auto-approved by Pramaan protocol</h3>
-                      <p className="text-[12px] text-[#CCD0CF]">All checks passed. Resolution verified and logged on the public team ledger.</p>
+                      <p className="text-[12px] text-[#FFF9D2]">All checks passed. Resolution verified and logged on the public team ledger.</p>
                     </div>
                   </div>
                   <div className="sm:text-right">
-                    <span className="text-[11px] text-[#9BA8AB] uppercase font-bold block">Reward distributed</span>
+                    <span className="text-[11px] text-[#8CC0EB] uppercase font-bold block">Reward distributed</span>
                     <span className="font-bebas text-[22px] text-[#6BBF4A] flex items-center gap-1 sm:justify-end">
                       <Icon name="Coins" size={20} /> +{v.coins} Seva Coins
                     </span>
@@ -1873,7 +1882,7 @@ function ScreenAIVerification({ issue, pendingIssue, auditedIssues, user, onSele
                     <div className="w-10 h-10 rounded-full bg-[#F44336] text-white flex items-center justify-center font-bold flex-shrink-0">!</div>
                     <div>
                       <h3 className="font-bebas text-[22px] text-[#F44336] leading-tight m-0">Flagged for human review</h3>
-                      <p className="text-[12px] text-[#CCD0CF]">Confidence below {APPROVAL_THRESHOLD}%. Escrowed to the Chief Municipal Vigilance Officer; no coins released.</p>
+                      <p className="text-[12px] text-[#FFF9D2]">Confidence below {APPROVAL_THRESHOLD}%. Escrowed to the Chief Municipal Vigilance Officer; no coins released.</p>
                     </div>
                   </div>
                   {canResubmit ? (
@@ -1897,7 +1906,7 @@ function ScreenAIVerification({ issue, pendingIssue, auditedIssues, user, onSele
 
 function ScreenPublicLedger({ officers, currentUserId }) {
   const ranked = [...officers].sort((a, b) => b.coins - a.coins).map((o, idx) => ({ ...o, rank: idx + 1 }));
-  const podiumTone = ['border-[#FF9800] text-[#FF9800]', 'border-[#CCD0CF] text-[#CCD0CF]', 'border-[#9BA8AB]/60 text-[#9BA8AB]'];
+  const podiumTone = ['border-[#FF9800] text-[#FF9800]', 'border-[#FFF9D2] text-[#FFF9D2]', 'border-[#8CC0EB]/60 text-[#8CC0EB]'];
 
   return (
     <div className="w-full">
@@ -1905,49 +1914,49 @@ function ScreenPublicLedger({ officers, currentUserId }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {ranked.slice(0, 3).map((o, idx) => (
-          <div key={o.id} className={`bg-[#11212D] rounded-xl p-5 card-shadow border-t-4 ${podiumTone[idx]} ${o.id === currentUserId ? 'ring-1 ring-[#FF9800]/60' : ''}`}>
+          <div key={o.id} className={`bg-[#1B263B] rounded-xl p-5 card-shadow border-t-4 ${podiumTone[idx]} ${o.id === currentUserId ? 'ring-1 ring-[#FF9800]/60' : ''}`}>
             <span className="font-bebas text-[36px] leading-none">#{o.rank}</span>
-            <p className="font-semibold text-[#CCD0CF] mt-1">{o.name}{o.id === currentUserId && <span className="text-[11px] text-[#FF9800] uppercase font-bold ml-2">You</span>}</p>
-            <p className="text-[12px] text-[#9BA8AB] mb-3">{o.ward}</p>
+            <p className="font-semibold text-[#FFF9D2] mt-1">{o.name}{o.id === currentUserId && <span className="text-[11px] text-[#FF9800] uppercase font-bold ml-2">You</span>}</p>
+            <p className="text-[12px] text-[#8CC0EB] mb-3">{o.ward}</p>
             <div className="flex justify-between items-end">
               <span className="font-bebas text-[24px] text-[#6BBF4A] flex items-center gap-1"><Icon name="Coins" size={18} />{o.coins.toLocaleString('en-IN')}</span>
-              <span className="text-[12px] text-[#9BA8AB]">{o.resolved} resolved</span>
+              <span className="text-[12px] text-[#8CC0EB]">{o.resolved} resolved</span>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl card-shadow overflow-x-auto">
+      <div className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl card-shadow overflow-x-auto">
         <table className="w-full min-w-[720px] text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#253745] bg-[#06141B]/50">
+            <tr className="border-b border-[#2A3A55] bg-[#121A2B]/50">
               {['Rank', 'Officer', 'Ward / Department', 'Resolved', 'Seva Coins', 'Spend-Efficiency'].map((h, i) => (
-                <th key={h} className={`py-4 px-5 font-bebas text-[17px] text-[#9BA8AB] tracking-wider ${i === 3 ? 'text-center' : i > 3 ? 'text-right' : ''}`}>{h}</th>
+                <th key={h} className={`py-4 px-5 font-bebas text-[17px] text-[#8CC0EB] tracking-wider ${i === 3 ? 'text-center' : i > 3 ? 'text-right' : ''}`}>{h}</th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#253745]/60 text-[15px]">
+          <tbody className="divide-y divide-[#2A3A55]/60 text-[15px]">
             {ranked.map((off) => {
               const isMe = off.id === currentUserId;
               return (
-                <tr key={off.id} className={`transition-colors ${isMe ? 'bg-[#FF9800]/10' : 'hover:bg-[#253745]/30'}`}>
+                <tr key={off.id} className={`transition-colors ${isMe ? 'bg-[#FF9800]/10' : 'hover:bg-[#2A3A55]/30'}`}>
                   <td className="py-4 px-5">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bebas text-[18px] ${
-                      off.rank === 1 ? 'bg-[#FF9800] text-black' : off.rank === 2 ? 'bg-[#CCD0CF] text-black' : off.rank === 3 ? 'bg-[#4A5C6A] text-white' : 'bg-[#253745] text-[#9BA8AB]'
+                      off.rank === 1 ? 'bg-[#FF9800] text-black' : off.rank === 2 ? 'bg-[#FFF9D2] text-black' : off.rank === 3 ? 'bg-[#3B5378] text-white' : 'bg-[#2A3A55] text-[#8CC0EB]'
                     }`}>{off.rank}</div>
                   </td>
-                  <td className="py-4 px-5 font-semibold text-[#CCD0CF]">
+                  <td className="py-4 px-5 font-semibold text-[#FFF9D2]">
                     {off.name}
                     {isMe && <span className="ml-2 text-[10px] uppercase font-bold text-[#FF9800] align-middle">You</span>}
-                    <span className="block text-[11px] font-mono text-[#9BA8AB] font-normal">{off.id}</span>
+                    <span className="block text-[11px] font-mono text-[#8CC0EB] font-normal">{off.id}</span>
                   </td>
-                  <td className="py-4 px-5 text-[#9BA8AB] text-[14px]">{off.ward}</td>
-                  <td className="py-4 px-5 text-center font-bebas text-[20px] text-[#CCD0CF]">{off.resolved}</td>
+                  <td className="py-4 px-5 text-[#8CC0EB] text-[14px]">{off.ward}</td>
+                  <td className="py-4 px-5 text-center font-bebas text-[20px] text-[#FFF9D2]">{off.resolved}</td>
                   <td className="py-4 px-5 text-right">
                     <span className="font-bebas text-[22px] text-[#6BBF4A] inline-flex items-center gap-1.5"><Icon name="Coins" size={18} />{off.coins.toLocaleString('en-IN')}</span>
                   </td>
                   <td className="py-4 px-5 text-right">
-                    <span className="px-2.5 py-1 rounded bg-[#253745] text-[#6BBF4A] border border-[#9BA8AB]/20 text-[13px] font-semibold">{off.efficiency}%</span>
+                    <span className="px-2.5 py-1 rounded bg-[#2A3A55] text-[#6BBF4A] border border-[#8CC0EB]/20 text-[13px] font-semibold">{off.efficiency}%</span>
                   </td>
                 </tr>
               );
@@ -1968,19 +1977,19 @@ function ScreenProfile({ user, issues, officers, onViewPramaan }) {
 
   return (
     <div className="max-w-4xl mx-auto w-full">
-      <div className="bg-[#11212D] border border-[#9BA8AB]/20 rounded-xl p-5 sm:p-6 card-shadow mb-6 flex items-center gap-5">
-        <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-[#253745] border-2 border-[#9BA8AB]/30 flex items-center justify-center font-bebas text-[36px] flex-shrink-0 ${isOfficer ? 'text-[#FF9800]' : 'text-[#6BBF4A]'}`}>
+      <div className="bg-[#1B263B] border border-[#8CC0EB]/20 rounded-xl p-5 sm:p-6 card-shadow mb-6 flex items-center gap-5">
+        <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-[#2A3A55] border-2 border-[#8CC0EB]/30 flex items-center justify-center font-bebas text-[36px] flex-shrink-0 ${isOfficer ? 'text-[#FF9800]' : 'text-[#6BBF4A]'}`}>
           {user.name.charAt(0)}
         </div>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <h1 className="font-bebas text-[28px] sm:text-[32px] text-[#CCD0CF] leading-tight m-0">{user.name}</h1>
+            <h1 className="font-bebas text-[28px] sm:text-[32px] text-[#FFF9D2] leading-tight m-0">{user.name}</h1>
             <span className={`px-2.5 py-0.5 rounded text-[11px] uppercase font-bold tracking-wider ${isOfficer ? 'bg-[#FF9800]/20 text-[#FF9800]' : 'bg-[#6BBF4A]/20 text-[#6BBF4A]'}`}>
               {isOfficer ? 'Municipal Nodal Engineer' : 'Verified Citizen'}
             </span>
           </div>
-          <p className="text-[13px] text-[#9BA8AB] mt-1 font-mono truncate">{isOfficer ? 'Employee ID' : 'Citizen ID'}: {user.id}</p>
-          {!isOfficer && user.alwaysAnonymous && <p className="text-[12px] text-[#9BA8AB] mt-1">🔒 Posts anonymously by default</p>}
+          <p className="text-[13px] text-[#8CC0EB] mt-1 font-mono truncate">{isOfficer ? 'Employee ID' : 'Citizen ID'}: {user.id}</p>
+          {!isOfficer && user.alwaysAnonymous && <p className="text-[12px] text-[#8CC0EB] mt-1">🔒 Posts anonymously by default</p>}
         </div>
       </div>
 
@@ -2007,35 +2016,35 @@ function OfficerProfile({ user, issues, officers, onViewPramaan }) {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-6 card-shadow">
-          <h3 className="font-bebas text-[20px] text-[#CCD0CF] mb-4">Seva coin accumulation (7 weeks)</h3>
-          <div className="h-44 flex items-end gap-3 border-b border-[#253745]">
+        <div className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-6 card-shadow">
+          <h3 className="font-bebas text-[20px] text-[#FFF9D2] mb-4">Seva coin accumulation (7 weeks)</h3>
+          <div className="h-44 flex items-end gap-3 border-b border-[#2A3A55]">
             {trend.map((val, idx) => (
               <div key={idx} className="flex-1 flex flex-col items-center justify-end gap-2 h-full">
-                <div className={`w-full rounded-t transition-all duration-300 ${idx === trend.length - 1 ? 'bg-[#6BBF4A]' : 'bg-[#4A5C6A] hover:bg-[#6BBF4A]'}`} style={{ height: `${val}%` }} title={`Week ${idx + 1}`} />
+                <div className={`w-full rounded-t transition-all duration-300 ${idx === trend.length - 1 ? 'bg-[#6BBF4A]' : 'bg-[#3B5378] hover:bg-[#6BBF4A]'}`} style={{ height: `${val}%` }} title={`Week ${idx + 1}`} />
               </div>
             ))}
           </div>
           <div className="flex gap-3 mt-2">
-            {trend.map((_, idx) => <span key={idx} className="flex-1 text-center text-[10px] text-[#9BA8AB]">Wk {idx + 1}</span>)}
+            {trend.map((_, idx) => <span key={idx} className="flex-1 text-center text-[10px] text-[#8CC0EB]">Wk {idx + 1}</span>)}
           </div>
         </div>
 
-        <div className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-6 card-shadow">
-          <h3 className="font-bebas text-[20px] text-[#CCD0CF] mb-4">Category-wise resolutions</h3>
+        <div className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-6 card-shadow">
+          <h3 className="font-bebas text-[20px] text-[#FFF9D2] mb-4">Category-wise resolutions</h3>
           <div className="space-y-3">
             {[
               { cat: "Roads & Asphalt", count: 68, color: "#6BBF4A" },
-              { cat: "Water & Pipelines", count: 42, color: "#9BA8AB" },
+              { cat: "Water & Pipelines", count: 42, color: "#8CC0EB" },
               { cat: "Streetlights", count: 22, color: "#FF9800" },
-              { cat: "Drainage / Sanitation", count: 10, color: "#4A5C6A" },
+              { cat: "Drainage / Sanitation", count: 10, color: "#3B5378" },
             ].map((item) => (
               <div key={item.cat}>
                 <div className="flex justify-between text-[12px] mb-1">
-                  <span className="text-[#CCD0CF] font-semibold">{item.cat}</span>
-                  <span className="text-[#9BA8AB]">{item.count} closed</span>
+                  <span className="text-[#FFF9D2] font-semibold">{item.cat}</span>
+                  <span className="text-[#8CC0EB]">{item.count} closed</span>
                 </div>
-                <div className="h-2.5 bg-[#06141B] rounded-full overflow-hidden">
+                <div className="h-2.5 bg-[#121A2B] rounded-full overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${(item.count / 68) * 100}%`, background: item.color }} />
                 </div>
               </div>
@@ -2044,16 +2053,16 @@ function OfficerProfile({ user, issues, officers, onViewPramaan }) {
         </div>
       </div>
 
-      <div className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-6 card-shadow">
-        <h3 className="font-bebas text-[20px] text-[#CCD0CF] mb-3">My Pramaan audit history</h3>
+      <div className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-6 card-shadow">
+        <h3 className="font-bebas text-[20px] text-[#FFF9D2] mb-3">My Pramaan audit history</h3>
         {myAudits.length === 0 ? (
-          <p className="text-[14px] text-[#9BA8AB]">No audited Saboot submissions yet.</p>
+          <p className="text-[14px] text-[#8CC0EB]">No audited Saboot submissions yet.</p>
         ) : (
-          <ul className="divide-y divide-[#253745]">
+          <ul className="divide-y divide-[#2A3A55]">
             {myAudits.map(i => (
               <li key={i.id}>
-                <button onClick={() => onViewPramaan(i)} className="w-full flex flex-wrap items-center justify-between gap-2 py-3 text-left hover:bg-[#253745]/30 px-2 rounded">
-                  <span className="text-[14px] text-[#CCD0CF] font-semibold">{i.id} · {i.title}</span>
+                <button onClick={() => onViewPramaan(i)} className="w-full flex flex-wrap items-center justify-between gap-2 py-3 text-left hover:bg-[#2A3A55]/30 px-2 rounded">
+                  <span className="text-[14px] text-[#FFF9D2] font-semibold">{i.id} · {i.title}</span>
                   <span className="flex items-center gap-3">
                     <StatusBadge status={i.status} />
                     <span className="font-bebas text-[18px] text-[#6BBF4A]">+{i.verification.coins}</span>
@@ -2075,35 +2084,35 @@ function CitizenProfile({ user, issues, onViewPramaan }) {
   const resolvedMine = reported.filter(i => i.status === 'Completed').length;
 
   const IssueTable = ({ title, rows, empty }) => (
-    <div className="bg-[#11212D] border border-[#9BA8AB]/15 rounded-xl p-5 sm:p-6 card-shadow">
-      <div className="flex flex-wrap gap-2 items-center justify-between mb-3 pb-3 border-b border-[#253745]">
-        <h3 className="font-bebas text-[20px] text-[#CCD0CF]">{title}</h3>
-        <span className="text-[12px] text-[#9BA8AB]">Audited issues open their Pramaan certificate</span>
+    <div className="bg-[#1B263B] border border-[#8CC0EB]/15 rounded-xl p-5 sm:p-6 card-shadow">
+      <div className="flex flex-wrap gap-2 items-center justify-between mb-3 pb-3 border-b border-[#2A3A55]">
+        <h3 className="font-bebas text-[20px] text-[#FFF9D2]">{title}</h3>
+        <span className="text-[12px] text-[#8CC0EB]">Audited issues open their Pramaan certificate</span>
       </div>
       {rows.length === 0 ? (
-        <p className="text-[14px] text-[#9BA8AB] py-2">{empty}</p>
+        <p className="text-[14px] text-[#8CC0EB] py-2">{empty}</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full min-w-[560px] text-left border-collapse">
             <thead>
-              <tr className="border-b border-[#253745]">
+              <tr className="border-b border-[#2A3A55]">
                 {['Issue', 'Category', 'Status', 'Anumodan'].map((h, i) => (
-                  <th key={h} className={`py-2 px-3 font-bebas text-[16px] text-[#9BA8AB] ${i === 3 ? 'text-right' : ''}`}>{h}</th>
+                  <th key={h} className={`py-2 px-3 font-bebas text-[16px] text-[#8CC0EB] ${i === 3 ? 'text-right' : ''}`}>{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#253745]/60 text-[14px]">
+            <tbody className="divide-y divide-[#2A3A55]/60 text-[14px]">
               {rows.map((item) => (
                 <tr
                   key={item.id}
                   onClick={item.verification ? () => onViewPramaan(item) : undefined}
-                  className={`transition-colors ${item.verification ? 'hover:bg-[#253745]/40 cursor-pointer' : ''}`}
+                  className={`transition-colors ${item.verification ? 'hover:bg-[#2A3A55]/40 cursor-pointer' : ''}`}
                 >
-                  <td className="py-3 px-3 font-semibold text-[#CCD0CF]">
+                  <td className="py-3 px-3 font-semibold text-[#FFF9D2]">
                     {item.title}
-                    <span className="block text-[11px] font-mono text-[#9BA8AB] font-normal">{item.id}{item.verification && ' · view audit →'}</span>
+                    <span className="block text-[11px] font-mono text-[#8CC0EB] font-normal">{item.id}{item.verification && ' · view audit →'}</span>
                   </td>
-                  <td className="py-3 px-3 text-[#9BA8AB]">{item.category}</td>
+                  <td className="py-3 px-3 text-[#8CC0EB]">{item.category}</td>
                   <td className="py-3 px-3"><StatusBadge status={item.status} /></td>
                   <td className="py-3 px-3 text-right font-bebas text-[18px] text-[#FF9800]">{item.anumodanCount}</td>
                 </tr>
